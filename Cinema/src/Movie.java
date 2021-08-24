@@ -9,22 +9,16 @@ public class Movie {
 	private int runningTime; //러닝타임
 	private int screeninGeriod; //상영기간 date 형식 개봉일 끝나는일 두개
 	public String summary; //줄거리
-	
-	Movie(String summary){
-		this.summary = summary;
-	}
-	Movie(String movieTitle, String genre, String director, String actor, int runningTime, int screeninGeriod){
+
+	Movie(String movieTitle, String genre, String director, String actor, int runningTime, int screeninGeriod, String summary){
 		this.movieTitle = movieTitle;
 		this.genre = genre;
 		this.director = director;
 		this.actor = actor;
 		this.runningTime = runningTime;
 		this.screeninGeriod = screeninGeriod;
-	}
-	
-	
-	
-	
+		this.summary = summary;
+	}	
 	
 	public String getMovieTitle() {
 		return movieTitle;
