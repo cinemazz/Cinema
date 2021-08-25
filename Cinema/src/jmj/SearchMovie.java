@@ -1,32 +1,31 @@
 package jmj;
 
-import java.util.ArrayList;
-import java.util.Scanner;
 public class SearchMovie {
 	//검색 화면
 	Movie movie;
-	String searchresult;
+	String searchtext;
 	
 	
-	Scanner scanner = new Scanner(System.in);
-	public String search(Detailpage dtpage) {
+	public String search(String stext) {
 		
-		System.out.println("영화 제목 또는 감독으로 검색 해주세요");
-		this.searchresult = scanner.nextLine();
+		Detailpage det = new Detailpage();
 		
-		dtpage.detailpager();
-		
-		if(searchresult == detailpager().) {
+		for (Movie movie : det.detailpager()) {
+			//영화 런닝타임
+			int houer = movie.getRunningTime() / 60;
+			int minute = movie.getRunningTime() % 60;
 			
-			System.out.println(movied.getMovieTitle()+movied.getGenre()+movied.getDirector()+movied.getActor()+houer+"시"+minute+"분"+" 개봉일 :"+movied.getScreeninGeriod()+movied.getScreeninEndDate());
-			break;
+			if(movie.getMovieTitle().contains(stext)) {
+				System.out.println(movie.getMovieTitle()+movie.getGenre()+movie.getDirector()+movie.getActor()+houer+"시"+minute+"분"+" 개봉일 :"+movie.getScreeninGeriod()+movie.getScreeninEndDate());
+				
+			}else {
+				System.out.println("검색 결과가 없습니다.");
+			}
+			
+			
 		}
+		return searchtext;
 		
-		return searchresult;
 	}
 	
-	void snclose() {
-		scanner.close();
-	}
-		
 }

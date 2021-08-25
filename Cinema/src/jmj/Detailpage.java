@@ -19,12 +19,7 @@ public class Detailpage {
 		mdetail.add(new Movie("프리가이 ","액션 ","숀레비 ","라이언 레놀즈, 타이카 와이티티 ",210,"07-20","09-14"," 평범한 직장, 절친 그리고 한 잔의 커피."));
 		mdetail.add(new Movie("남색대문 ","로맨스 ","이치엔 ","계륜미, 진백림 ",200,"07-01","09-30"," 여름마다 떠오를 청춘 영화의 클래식"));
 		mdetail.add(new Movie("팜 스프링스 ","코미디 ","맥스 바바코우 ","앤디 샘버그, 크리스틴 밀리오티 ",210,"08-07","10-31"," 인생 최고의 날로 기억될 멋진 결혼식이 열리는 팜스프링스의 리조트"));
-		for (Movie movied : mdetail) {
-			//영화 런닝타임
-			int houer = movied.getRunningTime() / 60;
-			int minute = movied.getRunningTime() % 60;	
-			System.out.println(movied.getMovieTitle()+movied.getGenre()+movied.getDirector()+movied.getActor()+houer+"시"+minute+"분"+" 개봉일 :"+movied.getScreeninGeriod()+movied.getScreeninEndDate());
-		}
+		
 		return mdetail;
 	}
 	
