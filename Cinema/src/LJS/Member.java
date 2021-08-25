@@ -7,6 +7,12 @@ public class Member {
 	private String password;
 	private String phone;
 	
+	public Member(String id, String password) {
+		super();
+		this.id = id;
+		this.password = password;
+	}
+	
 	public Member(String id, String password, String phone) {
 		super();
 		this.id = id;

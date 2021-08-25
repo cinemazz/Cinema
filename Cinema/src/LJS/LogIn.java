@@ -7,6 +7,12 @@ public class LogIn {
 	private String password;
 	private String phone;
 	
+	public Member LogIn(String id, String password) {
+		
+		Scanner logIn = new Scanner(System.in);
+		
+		return new Member(id, password);
+	}
 	
 	public Member LogIn (String id, String password, String phone) {
 		

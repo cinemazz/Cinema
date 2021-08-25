@@ -7,17 +7,26 @@ public class LogInMain {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("아이디를 입력하세요!");
+		System.out.println("아이디를 입력하세요.");
 		String id = sc.nextLine();
 		
-		System.out.println("비밀번호를 입력하세요!");
+		System.out.println("비밀번호를 입력하세요.");
 		String password = sc.nextLine();
 		
-		System.out.println("전화번호를 입력하세요!");
-		String phone = sc.nextLine();
-		
 		LogIn logIn = new LogIn();
-		Member m1 = logIn.LogIn(id, password, phone);
+		Member m1 = logIn.LogIn(id, password);
+		
+		MemberData data = new MemberData();
+		data.login(id, password);
+		
+		if(m1.getId().equals(data) && m1.getPassword().equals(data)) {
+			System.out.println("로그인 되었습니다.");
+			// 영화 예매 메뉴 ㄱㄱ
+		}else {
+			System.out.println("아이디 혹은 비밀번호가 일치하지않습니다.");
+			// 로그인 메뉴 ㄱㄱ
+		}
+		
 		
 		sc.close();
 		
