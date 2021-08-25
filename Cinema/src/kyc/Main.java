@@ -19,30 +19,36 @@ public class Main {
 		Cinema cinema = new Cinema();
 		showTime = new ShowTime();
 		ArrayList<Cinema> cinemaList;
-		ArrayList<ShowTime> showTimeList;
+		ArrayList<ShowTime> showTimeList;		
+		int index = 0;
 		
 		System.out.println("날짜를 입력하세요");
-		date = sc.nextLine();
 		System.out.println("영화 리스트입니다.");
 		System.out.println("===============");
+		
+		index = 0;
 		for (Movie movie : mdetail) {
-			if(movie.getScreeninGeriod() == 1)
-			System.out.println(movie.getMovieTitle());
+			System.out.println((index++)+". "+movie.getMovieTitle());
 		}
 		System.out.println("===============");
+		System.out.println("영화를 선택해주세요");
 		System.out.println("영화관 리스트입니다.");
 		System.out.println("===============");
+		System.out.println("영화관을 선택해주세요");
 		
+		index = 0;
 		cinemaList = cinema.cinemaGenerater();
-		for (Cinema cinemaItem : cinemaList) {
-			System.out.println(cinemaItem.getName());
-		}
+		for (Cinema cinemaItem : cinemaList) {			
+			System.out.println((index++)+". "+cinemaItem.getName());
+		}		
 		
 		System.out.println("시간대를 선택해주세요");
 		System.out.println("===============");
 		showTimeList = showTime.showTimeGenerater();
+		
+		index = 0;
 		for (ShowTime showTime : showTimeList) {
-			System.out.println(showTime.time.getTime());
+			System.out.println((index++)+". "+showTime.time.getTime().getHours() +" : "+showTime.time.getTime().getMinutes());
 		}
 		System.out.println("===============");
 		
