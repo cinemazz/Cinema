@@ -30,13 +30,8 @@ public class TicketingCheck {
 		}
 		System.out.println();
 		//상영시간 - 00:00
-		System.out.println("상영시간 - "+showTime/60+":"+showTime%60);
+		System.out.println("상영시간 - "+String.format("%02d:%02d",showTime/60,showTime%60));
 		//결제금액 : 0000원 할인률이 적용된 결제금액
 		System.out.println("결제금액 : "+payment+"원");
-	}
-	
-	public static void main(String[] args) {//확인용 main
-		TicketingCheck tc = new TicketingCheck();
-		tc.showInfo();
 	}
 }
