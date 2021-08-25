@@ -55,6 +55,5 @@ public class Movie {
 	}
 	public void setScreeninGeriod(int screeninGeriod) {
 		this.screeninGeriod = screeninGeriod;
-	}
-	
+	}	
 }
