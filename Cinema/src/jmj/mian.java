@@ -2,9 +2,18 @@ package jmj;
 
 public class mian {
 	
-	Detailpage dt = new Detailpage();
-	
-	
-	
+	public static void main(String[] args) {
+		Detailpage dtpage = new Detailpage();
+		dtpage.detailpager();
+		
+		SearchMovie serchm = new SearchMovie();
+		String text = serchm.search();
+		
+			
+		
+		
+		
+				
+	}
 
 }
