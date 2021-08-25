@@ -22,14 +22,18 @@ public class MovieTicketing {
 				System.out.println("영화예매 메소드 호출");
 			}else if(input.matches("2")){
 				System.out.println("영화검색 메소드 호출");
+				//SearchMovie.method()
 			}else if(input.matches("3")) {
 				new TicketingCheck().showInfo();
+				//매개변수로 로그인된 맴버와 영화를 넘겨준다
+				//그러기위해선 여기 클래스에 매개변수로 맴버객체를 받고
+				//영화객체를 생성해 놓아야한다.
 			}else if(input.matches("4")) {
 				System.out.println("영화 예매 시스템을 종료합니다.");
 				repeatFlag = false;
 			}else {
 				System.out.println("입력을 다시 확인해주세요.");
 			}
-		}while(repeatFlag);//입력이 틀렸을경우 반복하는 while
+		}while(repeatFlag);//종료전까지 반복한다.
 	}
 }

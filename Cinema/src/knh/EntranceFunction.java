@@ -10,9 +10,9 @@ public class EntranceFunction {
 		
 		String input;
 		boolean repeatFlag;
+		LogInMain lim = new LogInMain(); 
 		
 		do {
-			LogInMain lim = new LogInMain(); 
 			repeatFlag = false;
 			System.out.println("=====================================");
 			System.out.println();
@@ -25,18 +25,24 @@ public class EntranceFunction {
 			if(input.matches("1")) {
 				System.out.println("로그인 객체 생성(확인용)");
 				//lim.method()
-				//지금은 여기 메인이 들어가있지만 로그인을 하는 행위를
-				//메소드로 만들어서 lim.method();형식으로 사용한다.
+				//return member객체
+				
 			}else if(input.matches("2")){
+				System.out.println("회원가입 메소드");
 				//new 회원가입().메소드();
 				//로그인 메소드 사용(lim.method();)
+				repeatFlag = true;
+				//회원가입 결과에 상관없이 다시 로그인창으로 간다.
+				
 			}else if(input.matches("3")) {
 				System.out.println("ID/PW찾기");
 				System.out.println("==================");
 				new main().callAccountFind();
 				//로그인 메소드 사용(lim.method();)
+				
 			}else if(input.matches("4")) {
 				System.out.println("영화 예매 시스템을 종료합니다.");
+				System.exit(0);
 			}else {
 				System.out.println("입력을 다시 확인해주세요.");
 				repeatFlag = true;
