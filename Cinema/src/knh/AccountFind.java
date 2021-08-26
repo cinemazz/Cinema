@@ -47,6 +47,6 @@ public class AccountFind {
 		
 		}while(!repeatFlag);
 		
-		sc.close();
+		//sc.close();
 	}
 }

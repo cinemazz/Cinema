@@ -1,6 +1,7 @@
 package knh;
 
 import java.util.Scanner;
+import test.mian;
 
 public class MovieTicketing {
 
@@ -21,7 +22,7 @@ public class MovieTicketing {
 			if(input.matches("1")) {
 				System.out.println("영화예매 메소드 호출");
 			}else if(input.matches("2")){
-				System.out.println("영화검색 메소드 호출");
+				new mian().search();
 				//SearchMovie.method()
 			}else if(input.matches("3")) {
 				new TicketingCheck().showInfo();

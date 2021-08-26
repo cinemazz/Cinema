@@ -1,19 +1,18 @@
 package knh;
 
 import java.util.Scanner;
-
 import LJS.Login;
 
 public class EntranceFunction {
 	
-	public void logIn(Scanner sc) {
+	public static boolean logIn(Scanner sc) {
 		
 		String input;
-		boolean repeatFlag;
+		boolean repeatFlag, checkLogin = false;
 		Login lim = new Login(); 
 		
 		do {
-			repeatFlag = false;
+			repeatFlag = true;
 			System.out.println("=====================================");
 			System.out.println();
 			System.out.println("1. 로그인   2. 회원가입   3.ID/PW 찾기   4. 종료");
@@ -23,7 +22,13 @@ public class EntranceFunction {
 	
 			input = sc.nextLine();
 			if(input.matches("1")) {
-				System.out.println("로그인 객체 생성(확인용)");
+				new Login();
+				checkLogin = Login.login();
+				if(checkLogin) {
+					repeatFlag = false;
+				}else {
+					System.out.println("메뉴 선택창으로 돌아옵니다.");
+				}
 				//lim.method()
 				//return member객체
 				
@@ -31,7 +36,6 @@ public class EntranceFunction {
 				System.out.println("회원가입 메소드");
 				//new 회원가입().메소드();
 				//로그인 메소드 사용(lim.method();)
-				repeatFlag = true;
 				//회원가입 결과에 상관없이 다시 로그인창으로 간다.
 				
 			}else if(input.matches("3")) {
@@ -45,9 +49,10 @@ public class EntranceFunction {
 				System.exit(0);
 			}else {
 				System.out.println("입력을 다시 확인해주세요.");
-				repeatFlag = true;
 			}
 		}while(repeatFlag);//입력이 틀렸을경우 반복하는 while
+		
+		return checkLogin;
 	}
 
 }
