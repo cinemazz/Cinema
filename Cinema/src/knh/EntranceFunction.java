@@ -2,7 +2,7 @@ package knh;
 
 import java.util.Scanner;
 
-import LJS.LogInMain;
+import LJS.Login;
 
 public class EntranceFunction {
 	
@@ -10,7 +10,7 @@ public class EntranceFunction {
 		
 		String input;
 		boolean repeatFlag;
-		LogInMain lim = new LogInMain(); 
+		Login lim = new Login(); 
 		
 		do {
 			repeatFlag = false;
