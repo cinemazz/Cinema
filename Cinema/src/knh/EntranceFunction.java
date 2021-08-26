@@ -46,7 +46,7 @@ public class EntranceFunction {
 				
 			}else if(input.matches("4")) {
 				System.out.println("영화 예매 시스템을 종료합니다.");
-				System.exit(0);
+				repeatFlag = false;
 			}else {
 				System.out.println("입력을 다시 확인해주세요.");
 			}
