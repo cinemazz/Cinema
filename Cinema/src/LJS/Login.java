@@ -8,12 +8,10 @@ public class Login {
 
 	public static boolean login() {
 		
-		/* 
-		 * 회원가입 되어있다 가정.
-		 * 회원가입 된 데이터는 아래의 memberList에 저장되어있다 가정.
-		 */
-
-		//로그인 테스트를위한 테스트 데이터들. 회원가입 파트와 merge시 삭제 예정.
+		
+		
+		
+		// 회원가입 된 데이터는 아래 memberList에 저장.. 로그인 테스트를 위한 데이터
 		List<Member> memberList = new ArrayList<>();
 		memberList.add(new Member("kangnh","nh123","010-1234-5678"));
 		memberList.add(new Member("kimyc","yc456","010-2345-6789"));

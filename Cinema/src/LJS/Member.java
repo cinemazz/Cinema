@@ -1,4 +1,5 @@
 package LJS;
+
 //È¸¿ø Å¬·¡½º Ä¸½¶È­
 public class Member {
 
@@ -6,6 +7,7 @@ public class Member {
 	private String id;
 	private String password;
 	private String phone;
+	
 	
 	public Member(String id, String password) {
 		this.id = id;
@@ -25,6 +27,8 @@ public class Member {
 	public void setId(String id) {
 		this.id = id;
 	}	
+	
+	
 	public String getPassword() {
 		return password;
 	}
@@ -32,6 +36,7 @@ public class Member {
 		this.password = password;
 	}	
 
+	
 	public String getPhone() {
 		return phone;
 	}

@@ -20,6 +20,7 @@ public class LoginProcess {
 		
 	}
 	
+	
 	public boolean doLogin(List<Member> memberList, Member input) {
 		
 		for(Member member : memberList) {
@@ -37,4 +38,5 @@ public class LoginProcess {
 		}
 		return false;
 	}
+	
 }
