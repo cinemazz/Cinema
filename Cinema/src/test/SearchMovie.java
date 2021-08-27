@@ -31,29 +31,29 @@ public class SearchMovie {
 		}
 		if(cnt == 0) {
 			System.out.println("검색 결과가 없습니다.");
-		}	
-	
-		//원하는 영화 선택
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("- 원하시는 영화 선택 해주세요");
-		try {
-			int searchst = Integer.parseInt(scanner.nextLine())-1;
-			//scanner.nextLine();
-			System.out.println(
-			"제목 :"+number.get(searchst).getMovieTitle()+"\n"+
-			"장르 :"+number.get(searchst).getGenre()+"\n"+
-			"감독 :"+number.get(searchst).getDirector()+"\n"+
-			"배우 :"+number.get(searchst).getActor()+"\n"+
-			"러닝타임 :"+number.get(searchst).getRunningTime() / 60+"시"+number.get(searchst).getRunningTime() % 60+"분"+"\n"+
-			"개봉일 :"+number.get(searchst).getScreeninGeriod()+"\n"+
-			"종료일 :"+number.get(searchst).getScreeninEndDate());
-
-		}catch(IndexOutOfBoundsException e) {
-			System.out.println("숫자에 해당하는 영화가 없습니다.");
-		}catch(NumberFormatException e) {
-			System.out.println("숫자가 아닙니다.");
-		}
+		}else {
 		
+			//원하는 영화 선택
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("- 원하시는 영화 선택 해주세요");
+			try {
+				int searchst = Integer.parseInt(scanner.nextLine())-1;
+				//scanner.nextLine();
+				System.out.println(
+				"제목 :"+number.get(searchst).getMovieTitle()+"\n"+
+				"장르 :"+number.get(searchst).getGenre()+"\n"+
+				"감독 :"+number.get(searchst).getDirector()+"\n"+
+				"배우 :"+number.get(searchst).getActor()+"\n"+
+				"러닝타임 :"+number.get(searchst).getRunningTime() / 60+"시"+number.get(searchst).getRunningTime() % 60+"분"+"\n"+
+				"개봉일 :"+number.get(searchst).getScreeninGeriod()+"\n"+
+				"종료일 :"+number.get(searchst).getScreeninEndDate());
+	
+			}catch(IndexOutOfBoundsException e) {
+				System.out.println("숫자에 해당하는 영화가 없습니다.");
+			}catch(NumberFormatException e) {
+				System.out.println("숫자가 아닙니다.");
+			}
+		}
 		//scanner.close();
 		return number;
 	}	

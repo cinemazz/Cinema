@@ -8,8 +8,8 @@ public class EntranceFunction {
 	public static boolean logIn(Scanner sc) {
 		
 		String input;
-		boolean repeatFlag, checkLogin = false;
-		Login lim = new Login(); 
+		boolean repeatFlag;
+		boolean checkLogin = false;
 		
 		do {
 			repeatFlag = true;
