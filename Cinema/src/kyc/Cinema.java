@@ -7,8 +7,8 @@ import jmj.Detailpage;
 
 public class Cinema {
 	private String name;
-	static ArrayList<Movie> cinemaInMovieList;
-		
+	private static ArrayList<Movie> cinemaInMovieList;
+			
 	Cinema(String name, ArrayList<Movie> cinemaInMovieList){
 		this.name = name;
 		this.cinemaInMovieList = cinemaInMovieList;
@@ -24,30 +24,38 @@ public class Cinema {
 		this.name = name;
 	}
 	
+	public ArrayList<Movie> getCinemaInMovieList() {
+		return cinemaInMovieList;
+	}
+
+	public static void setCinemaInMovieList(ArrayList<Movie> cinemaInMovieList) {
+		Cinema.cinemaInMovieList = cinemaInMovieList;
+	}
+
 	public ArrayList<Cinema> cinemaGenerater() {
 		ArrayList<Cinema> cinemaList = new ArrayList<>();
 		Detailpage detailpage = new Detailpage();
 		ArrayList<Movie> movie = detailpage.detailpager();
 		ArrayList<Movie> seoulCinemaMovieList = new ArrayList<Movie>();
-		seoulCinemaMovieList.add(movie.get(0));
 		seoulCinemaMovieList.add(movie.get(1));
+		seoulCinemaMovieList.add(movie.get(5));
 		seoulCinemaMovieList.add(movie.get(2));
 		seoulCinemaMovieList.add(movie.get(3));
 		seoulCinemaMovieList.add(movie.get(4));		
 		Cinema seoulCinema = new Cinema("서울영화관", seoulCinemaMovieList);
 		cinemaList.add(seoulCinema);
 		
-		ArrayList<Movie> busanCinemaMovieList1 = new ArrayList<Movie>();
-		busanCinemaMovieList1.add(movie.get(5));
-		busanCinemaMovieList1.add(movie.get(6));
-		busanCinemaMovieList1.add(movie.get(7));
-		busanCinemaMovieList1.add(movie.get(8));
-		busanCinemaMovieList1.add(movie.get(9));
-		Cinema busanCinema = new Cinema("부산영화관", busanCinemaMovieList1);
+		ArrayList<Movie> busanCinemaMovieList = new ArrayList<Movie>();
+		busanCinemaMovieList.add(movie.get(5));
+		busanCinemaMovieList.add(movie.get(6));
+		busanCinemaMovieList.add(movie.get(7));
+		busanCinemaMovieList.add(movie.get(8));
+		busanCinemaMovieList.add(movie.get(9));
+		Cinema busanCinema = new Cinema("부산영화관", busanCinemaMovieList);
 		cinemaList.add(busanCinema);
 		
 		ArrayList<Movie> suwonCinemaMovieList = new ArrayList<Movie>();
-		suwonCinemaMovieList.add(movie.get(10));
+		suwonCinemaMovieList.add(movie.get(0));
 		suwonCinemaMovieList.add(movie.get(1));
 		suwonCinemaMovieList.add(movie.get(2));
 		suwonCinemaMovieList.add(movie.get(3));
@@ -56,7 +64,7 @@ public class Cinema {
 		cinemaList.add(suwonCinema);
 				
 		ArrayList<Movie> gangwonCinemaMovieList = new ArrayList<Movie>();
-		gangwonCinemaMovieList.add(movie.get(10));
+		gangwonCinemaMovieList.add(movie.get(1));
 		gangwonCinemaMovieList.add(movie.get(5));
 		gangwonCinemaMovieList.add(movie.get(7));
 		gangwonCinemaMovieList.add(movie.get(8));
@@ -78,7 +86,7 @@ public class Cinema {
 		junnamCinemaMovieList.add(movie.get(2));
 		junnamCinemaMovieList.add(movie.get(5));
 		junnamCinemaMovieList.add(movie.get(6));
-		junnamCinemaMovieList.add(movie.get(10));
+		junnamCinemaMovieList.add(movie.get(3));
 		Cinema junnamCinema = new Cinema("전남영화관", junnamCinemaMovieList);
 		cinemaList.add(junnamCinema);
 		
@@ -86,7 +94,7 @@ public class Cinema {
 		junbukCinemaMovieList.add(movie.get(1));
 		junbukCinemaMovieList.add(movie.get(4));
 		junbukCinemaMovieList.add(movie.get(5));
-		junbukCinemaMovieList.add(movie.get(10));
+		junbukCinemaMovieList.add(movie.get(3));
 		junbukCinemaMovieList.add(movie.get(9));
 		Cinema junbukCinema = new Cinema("전북영화관", junbukCinemaMovieList);
 		cinemaList.add(junbukCinema);

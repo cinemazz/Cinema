@@ -37,9 +37,9 @@ public class Main {
 		//리스트 인덱스
 		int index = 0;
 		
-		System.out.println("날짜를 입력해주세요 (입력 형식 예:2021-08-26)");
-		//날짜 입력
-		String fromDate = sc.next();
+		System.out.println("날짜를 입력해주세요 (입력 형식 예:08-26)");
+//		날짜 입력
+		String fromDate = "2021-"+sc.next();
 		SimpleDateFormat transFormat = new SimpleDateFormat("MM-dd");
 		try {
 			Date date = transFormat.parse(fromDate);
@@ -67,22 +67,22 @@ public class Main {
 		System.out.println("영화를 번호로 선택해주세요");
 		int movieSelect = sc.nextInt();
 		movieSelect--;
-		Movie dateMovie = movieOfDateResult.get(movieSelect);
-		System.out.println(movieOfDateResult.get(movieSelect).getMovieTitle());
+		Movie dateMovie = movieOfDateResult.get(movieSelect);		
 		
 		//영화관 선택
 		System.out.println("영화관 리스트입니다.");
 		System.out.println("===============");
 		index = 0;
-		cinemaList = cinema.cinemaGenerater();
+		
 		for (Cinema cinemaItem : cinemaList) {
-			for (Movie movie : cinemaItem.cinemaInMovieList) {
-				if(dateMovie == movie) {
-					System.out.println((index)+". "+cinemaItem.getName());
+			for (Movie movieItem : cinemaItem.getCinemaInMovieList()) {
+				if(movieItem.equals(dateMovie)) {
+					System.out.println("찾았다.");
 				}
 			}
 			
 		}
+			
 		System.out.println("=================");
 		System.out.println("영화관을 선택해주세요");
 		//영화관 입력
