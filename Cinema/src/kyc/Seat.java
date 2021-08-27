@@ -7,6 +7,46 @@ public class Seat {
 	ArrayList<String> seatA = seating();
 	ArrayList<String> seatB = seating();
 	ArrayList<String> seatC = seating();
+	public ArrayList<ArrayList<String>> getSeats() {
+		return seats;
+	}
+
+	public void setSeats(ArrayList<ArrayList<String>> seats) {
+		this.seats = seats;
+	}
+
+	public ArrayList<String> getSeatA() {
+		return seatA;
+	}
+
+	public void setSeatA(ArrayList<String> seatA) {
+		this.seatA = seatA;
+	}
+
+	public ArrayList<String> getSeatB() {
+		return seatB;
+	}
+
+	public void setSeatB(ArrayList<String> seatB) {
+		this.seatB = seatB;
+	}
+
+	public ArrayList<String> getSeatC() {
+		return seatC;
+	}
+
+	public void setSeatC(ArrayList<String> seatC) {
+		this.seatC = seatC;
+	}
+
+	public ArrayList<String> getSeatD() {
+		return seatD;
+	}
+
+	public void setSeatD(ArrayList<String> seatD) {
+		this.seatD = seatD;
+	}
+
 	ArrayList<String> seatD = seating();	
 
 	public ArrayList<String> seating() {
