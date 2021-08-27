@@ -22,7 +22,7 @@ public class SearchMovie {
 				//System.out.println(movie.getMovieTitle()+movie.getGenre()+movie.getDirector()+movie.getActor()+houer+"시"+minute+"분"+" 개봉일 :"+movie.getScreeninGeriod()+movie.getScreeninEndDate());
 				System.out.println("제목 :"+movie.getMovieTitle()+"/ 감독 :"+movie.getDirector());
 				number.add(movie);
-				cnt++;
+				cnt++;// 검색 결과에 맞는 개수가 표시됨
 			}else if(movie.getDirector().contains(stext)) {
 				System.out.println("제목 :"+movie.getMovieTitle()+"/ 감독 :"+movie.getDirector());
 				cnt++;
@@ -33,10 +33,10 @@ public class SearchMovie {
 		}	
 	
 		//원하는 영화 선택
-		Scanner scanner = new Scanner(System.in);
+		Scanner scanne = new Scanner(System.in);
 		System.out.println("- 원하시는 영화 선택 해주세요");
-		int searchst = Integer.parseInt(scanner.next());
-		scanner.nextLine();
+		int searchst = Integer.parseInt(scanne.next());
+		scanne.nextLine();
 		System.out.println(
 		"제목 :"+number.get(searchst).getMovieTitle()+"\n"+
 		"장르 :"+number.get(searchst).getGenre()+"\n"+
@@ -47,7 +47,7 @@ public class SearchMovie {
 		"종료일 :"+number.get(searchst).getScreeninEndDate());
 
 		
-		scanner.close();
+		//scanne.close();
 		return number;
 	}	
 
