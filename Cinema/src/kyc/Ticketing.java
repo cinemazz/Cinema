@@ -1,9 +1,11 @@
 package kyc;
 import java.text.ParseException;
+import java.util.InputMismatchException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.regex.*;
 
 import jmj.Detailpage;
 import jmj.Movie;
@@ -14,7 +16,13 @@ public class Ticketing {
 	static ArrayList<ShowTime> showTimeList;
 	static Detailpage detailPage;
 	static ShowTime showTime;
-
+	
+	public static void regularText(String str) {
+		if(Pattern.matches("^[0-9]-[0-9]", str)) {
+			
+		}
+	}
+	
 	public Ticket ticketing() {
 		//영화 상세페이지 영화 리스트
 		detailPage = new Detailpage();
@@ -33,21 +41,23 @@ public class Ticketing {
 
 		//스캐너
 		Scanner sc = new Scanner(System.in);
-
+		
 		//리스트 인덱스
-		int index = 0;		
-
+		int index = 0;
+		
+		//날짜 입력
 		System.out.println("날짜를 입력해주세요 (입력 형식 예:08-26)");
-		//		날짜 입력
 		String fromDate = "2021-"+sc.next();
-		SimpleDateFormat transFormat = new SimpleDateFormat("MM-dd");
-		try {
-			Date date = transFormat.parse(fromDate);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		// 유효성 검사
+		boolean datePattern = Pattern.matches("^2021-([0-9]{2})-([0-9]{2})", fromDate);		
+				
+		while(!datePattern) {
+			System.out.println("날짜 입력형식을 맞춰 다시입력해주세요");
+			fromDate = "2021-"+sc.next();
+			datePattern = Pattern.matches("^2021-([0-9]{2})-([0-9]{2})", fromDate);			
 		}
-
+		
+		
 
 		//영화 선택
 		System.out.println("영화 리스트입니다.");
@@ -65,9 +75,11 @@ public class Ticketing {
 		}
 		System.out.println("===============");
 		System.out.println("영화를 번호로 선택해주세요");
-		int movieSelectNum = sc.nextInt();
-		movieSelectNum--;
-		Movie movieSelect = movieOfDateResult.get(movieSelectNum);
+		String movieSelectNum = sc.next();
+		boolean movieSelectPattern = Pattern.matches("^[0-9])", movieSelectNum);
+		int movieSelectToIntNum = Integer.parseInt(movieSelectNum);
+		movieSelectToIntNum--;
+		Movie movieSelect = movieOfDateResult.get(movieSelectToIntNum);
 
 		//영화관 선택
 		System.out.println("영화관 리스트입니다.");
@@ -235,7 +247,7 @@ public class Ticketing {
 				"예매 인원 - " + ticket.getNumberOfReservations()+"\n"+
 				"영화 관 - " + ticket.getCinemaSelect().getName()+"\n"+
 				"좌석 정보 - " + ticket.getSeatInfo()+"\n"+
-				"결제 금액 - " + ticket.getNumberOfReservations()*10000+"\n"				
+				"결제 금액 - " + ticket.getNumberOfReservations()*10000+"\n"
 		);
 		
 		Payment payment = new Payment();
