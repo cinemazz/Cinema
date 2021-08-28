@@ -1,7 +1,9 @@
 package knh;
 
 import java.util.Scanner;
+
 import LJS.Login;
+import LJS.SignUp;
 
 public class EntranceFunction {
 	

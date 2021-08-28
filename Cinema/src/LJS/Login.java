@@ -9,15 +9,13 @@ public class Login {
 	public static boolean login() {
 		
 		
-		
-		
 		// 회원가입 된 데이터는 아래 memberList에 저장.. 로그인 테스트를 위한 데이터
 		List<Member> memberList = new ArrayList<>();
 		memberList.add(new Member("kangnh","nh123","010-1234-5678"));
 		memberList.add(new Member("kimyc","yc456","010-2345-6789"));
 		memberList.add(new Member("leejs","js789","010-3456-7890"));
 		memberList.add(new Member("jeongmj","mj987","010-4567-8901"));
-		
+
 		
 		boolean loginSuccess = false;
 		int chance = 0;
@@ -51,5 +49,5 @@ public class Login {
 		}
 		return loginSuccess;
 	}
-
+	
 }
