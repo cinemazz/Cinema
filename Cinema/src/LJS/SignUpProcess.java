@@ -18,7 +18,6 @@ public class SignUpProcess {
 		String phone2 = sc.nextLine();
 	
 		return new Member(id2, password2, phone2);	
-		
 	}
 	
 
