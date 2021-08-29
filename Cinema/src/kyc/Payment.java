@@ -23,8 +23,8 @@ public class Payment {
 			System.out.println("결제하실 카드를 선택해 주세요");
 			int payment = sc.nextInt();
 			int cash = 0;
-			if(6 < ticket.getShowTimeSelect().time.getTime().getHours() 
-					&& ticket.getShowTimeSelect().time.getTime().getHours()> 9) {
+			if(6 <= ticket.getShowTimeSelect().time.getTime().getHours() 
+					|| ticket.getShowTimeSelect().time.getTime().getHours() >= 9) {
 				int payment1 = 10000*ticket.getNumberOfReservations();
 				if(payment == 1) {
 					cash = (int) (payment1 - ((payment1*0.3)+(payment1*0.05)));
@@ -44,6 +44,7 @@ public class Payment {
 				}
 			}
 			System.out.println("결제금액은 "+cash+"원 입니다.");
+			System.out.println("결제가 완료되었습니다.");
 		}else {
 			ticketing.ticketing();	
 		}

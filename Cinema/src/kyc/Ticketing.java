@@ -17,10 +17,23 @@ public class Ticketing {
 	static Detailpage detailPage;
 	static ShowTime showTime;
 	
-	public static void regularText(String str) {
-		if(Pattern.matches("^[0-9]-[0-9]", str)) {
-			
+	public boolean dateInput(String str) {
+		return Pattern.matches("^2021-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])", str);
+	}
+	
+	public ArrayList<Movie> movieListShow(String fromDate){
+		int index = 0;
+		GetValidDate getValidDate = new GetValidDate();
+		ArrayList<Movie> movieOfDateResult = new ArrayList<>(); 
+		for (Movie movie : mdetail) {
+			if(getValidDate.getValidDate(movie.getScreeninGeriod(), movie.getScreeninEndDate(), fromDate)) {
+				index++;
+				movieOfDateResult.add(movie);
+				System.out.println((index)+". "+movie.getMovieTitle());
+			}
 		}
+		
+		return movieOfDateResult;
 	}
 	
 	public Ticket ticketing() {
@@ -45,41 +58,57 @@ public class Ticketing {
 		//리스트 인덱스
 		int index = 0;
 		
+		//셀렉트 패턴
+				
 		//날짜 입력
 		System.out.println("날짜를 입력해주세요 (입력 형식 예:08-26)");
 		String fromDate = "2021-"+sc.next();
 		// 유효성 검사
-		boolean datePattern = Pattern.matches("^2021-([0-9]{2})-([0-9]{2})", fromDate);		
-				
-		while(!datePattern) {
+		dateInput(fromDate);
+		
+		while(!dateInput(fromDate)) {
 			System.out.println("날짜 입력형식을 맞춰 다시입력해주세요");
 			fromDate = "2021-"+sc.next();
-			datePattern = Pattern.matches("^2021-([0-9]{2})-([0-9]{2})", fromDate);			
-		}
-		
-		
+			dateInput(fromDate);			
+		}		
 
 		//영화 선택
 		System.out.println("영화 리스트입니다.");
 		System.out.println("===============");
 		index = 0;
-
-		GetValidDate getValidDate = new GetValidDate();
-		ArrayList<Movie> movieOfDateResult = new ArrayList<>(); 
-		for (Movie movie : mdetail) {
-			if(getValidDate.getValidDate(movie.getScreeninGeriod(), movie.getScreeninEndDate(), fromDate)) {
-				index++;
-				movieOfDateResult.add(movie);
-				System.out.println((index)+". "+movie.getMovieTitle());
+		
+		//영화리스트 
+		ArrayList<Movie> movieOfDateResult = movieListShow(fromDate);
+		
+		//입력 날짜에 영화가 없을경우 날짜 재입력
+		while(movieOfDateResult.isEmpty()) {
+			System.out.println("11월 11일까지만 입력해주세요 (입력 형식 예:08-26)");
+			fromDate = "2021-"+sc.next();
+			// 유효성 검사
+			dateInput(fromDate);
+			
+			while(!dateInput(fromDate)) {
+				System.out.println("날짜 입력형식을 맞춰 다시입력해주세요");
+				fromDate = "2021-"+sc.next();
+				dateInput(fromDate);			
 			}
+			movieOfDateResult = movieListShow(fromDate);
 		}
+		
 		System.out.println("===============");
 		System.out.println("영화를 번호로 선택해주세요");
 		String movieSelectNum = sc.next();
-		boolean movieSelectPattern = Pattern.matches("^[0-9])", movieSelectNum);
+		boolean SelectPattern = Pattern.matches("^([1-9])", movieSelectNum);
+				
+		while(!SelectPattern) {
+			System.out.println("숫자로만 입력해주세요");
+			movieSelectNum = sc.next();
+			SelectPattern = Pattern.matches("^([1-9])", movieSelectNum);			
+		}
+		
 		int movieSelectToIntNum = Integer.parseInt(movieSelectNum);
 		movieSelectToIntNum--;
-		Movie movieSelect = movieOfDateResult.get(movieSelectToIntNum);
+		Movie movieSelect = movieOfDateResult.get(movieSelectToIntNum);		
 
 		//영화관 선택
 		System.out.println("영화관 리스트입니다.");
@@ -89,7 +118,7 @@ public class Ticketing {
 		ArrayList<Cinema> cinemaInMovieResult = new ArrayList<>();
 		for (Cinema cinemaItem : cinemaList) {
 			for (Movie movieItem : cinemaItem.getCinemaInMovieList()) {
-				if(movieItem.getMovieTitle() == (movieSelect.getMovieTitle())) {
+				if(movieItem.getMovieTitle() == movieSelect.getMovieTitle()) {
 					index++;
 					cinemaInMovieResult.add(cinemaItem);
 					System.out.println(index+". "+cinemaItem.getName());			
@@ -97,11 +126,22 @@ public class Ticketing {
 			}			
 		}			
 		System.out.println("=================");
-		System.out.println("영화관을 선택해주세요");
+		System.out.println("영화관을 번호로 선택해주세요");
+		
 		//영화관 입력
-		int cinemaSelectNum = sc.nextInt();
-		cinemaSelectNum--;
-		Cinema cinemaSelect = cinemaInMovieResult.get(cinemaSelectNum);
+		String cinemaSelectNum = sc.next();
+		SelectPattern = Pattern.matches("^([1-9])", cinemaSelectNum);
+		
+		while(!SelectPattern) {
+			System.out.println("숫자로만 입력해주세요");
+			cinemaSelectNum = sc.next();
+			SelectPattern = Pattern.matches("^([1-9])", cinemaSelectNum);	
+		}
+		
+		int cinemaSelectToIntNum = Integer.parseInt(cinemaSelectNum);
+		cinemaSelectToIntNum--;
+		Cinema cinemaSelect = cinemaInMovieResult.get(cinemaSelectToIntNum);
+		
 
 		//상영 선택
 		System.out.println("상영 시간 리스트입니다.");
@@ -115,9 +155,20 @@ public class Ticketing {
 		}
 		System.out.println("상영시간을 선택해주세요");
 		//상영시간 선택
-		int showTimeSelectNum = sc.nextInt();
-		showTimeSelectNum--;
-		ShowTime showTimeSelect = showTimeList.get(showTimeSelectNum);
+		
+		
+		String showTimeSelectNum = sc.next();
+		SelectPattern = Pattern.matches("^([1-9])", showTimeSelectNum);
+		
+		while(!SelectPattern) {
+			System.out.println("숫자로만 입력해주세요");
+			showTimeSelectNum = sc.next();
+			SelectPattern = Pattern.matches("^([1-9])", cinemaSelectNum);
+		}
+		
+		int showTimeSelecToInttNum = Integer.parseInt(showTimeSelectNum);
+		showTimeSelecToInttNum--;
+		ShowTime showTimeSelect = showTimeList.get(showTimeSelecToInttNum);
 		//		System.out.println(showTimeSlect.time.getTime().getHours() +" : "+ showTimeSlect.time.getTime().getMinutes());
 
 		//좌석 선택
