@@ -1,5 +1,9 @@
 package LJS;
 
+import java.util.ArrayList;
+
+import kyc.Ticket;
+
 //È¸¿ø Å¬·¡½º Ä¸½¶È­
 public class Member {
 
@@ -7,8 +11,15 @@ public class Member {
 	private String id;
 	private String password;
 	private String phone;
+	private ArrayList<Ticket> ticketList;		
 	
-	
+	public Member(String id, String password, ArrayList<Ticket> ticketList) {
+		super();
+		this.id = id;
+		this.password = password;		
+		this.ticketList = ticketList;
+	}
+
 	public Member(String id, String password) {
 		this.id = id;
 		this.password = password;
@@ -42,5 +53,13 @@ public class Member {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public ArrayList<Ticket> getTicketList() {
+		return ticketList;
+	}
+
+	public void setTicketList(ArrayList<Ticket> ticketList) {
+		this.ticketList = ticketList;
 	}
 }

@@ -1,23 +1,29 @@
 package LJS;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class LoginProcess {
-	
-	public Member memberInput() {
+import kyc.Ticket;
 
-		
+public class LoginProcess {
+	public static Member nowMember;
+	
+	public Member memberInput() {		
 		Scanner sc = new Scanner(System.in);
+		ArrayList<Ticket> ticketList = new ArrayList<>();
 	
 		System.out.println("아이디를 입력하세요.");
-		String id = sc.nextLine();
+		String id = sc.next();
+		sc.nextLine();
+		System.out.println(id);
 		System.out.println("비밀번호를 입력하세요.");
-		String password = sc.nextLine();
-	
-		return new Member(id, password);	
-		//사용자가 입력한 아이디 패스워드 정보를 담은 객체
-		
+		String password = sc.next();
+		sc.nextLine();
+		System.out.println(password);
+		nowMember = new Member(id, password, ticketList);
+		return nowMember;	
+		//사용자가 입력한 아이디 패스워드 정보를 담은 객체		
 	}
 	
 	

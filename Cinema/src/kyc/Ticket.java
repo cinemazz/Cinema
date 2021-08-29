@@ -9,7 +9,26 @@ public class Ticket {
 	private ShowTime showTimeSelect;
 	private int numberOfReservations;
 	private String seatInfo;
+	private int pay;	
 	
+	public Ticket(String fromDate2, Movie movieSelect2, Cinema cinemaSelect2, ShowTime showTimeSelect2,
+			int numberOfReservations2, String seatInfo) {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Ticket(String fromDate2, Movie movieSelect2, Cinema cinemaSelect2, ShowTime showTimeSelect2,
+			int numberOfReservations2, String seatInfo2, int pay) {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public int getPay() {
+		return pay;
+	}
+
+	public void setPay(int pay) {
+		this.pay = pay;
+	}
+
 	public String getSeatInfo() {
 		return seatInfo;
 	}
@@ -17,11 +36,6 @@ public class Ticket {
 	public void setSeatInfo(String seatInfo) {
 		this.seatInfo = seatInfo;
 	}	
-	
-	public Ticket(String fromDate2, Movie movieSelect2, Cinema cinemaSelect2, ShowTime showTimeSelect2,
-			int numberOfReservations2, String seatInfo) {
-		// TODO Auto-generated constructor stub
-	}
 
 	public String getFromDate() {
 		return fromDate;

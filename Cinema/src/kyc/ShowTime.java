@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ShowTime {
-	Calendar time;
+	public Calendar time;
 
 	public ShowTime(Calendar time) {
 		super();

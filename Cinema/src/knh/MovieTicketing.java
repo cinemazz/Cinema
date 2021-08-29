@@ -1,6 +1,9 @@
 package knh;
 
 import java.util.Scanner;
+
+import LJS.LoginProcess;
+import kyc.*;
 import test.mian;
 
 public class MovieTicketing {
@@ -9,6 +12,7 @@ public class MovieTicketing {
 		String input;
 		boolean repeatFlag;
 		mian menu = new mian();
+		Ticketing ticketing = new Ticketing();		
 		
 		do {
 			repeatFlag = true;
@@ -22,11 +26,12 @@ public class MovieTicketing {
 			input = sc.nextLine();
 			if(input.matches("1")) {
 				System.out.println("영화예매 메소드 호출");
+				ticketing.ticketing();
 			}else if(input.matches("2")){
 				menu.search(sc);
 				//SearchMovie.method()
 			}else if(input.matches("3")) {
-				new TicketingCheck().showInfo();
+				new TicketingCheck().showInfo(LoginProcess.nowMember.getTicketList());				
 				//매개변수로 로그인된 맴버와 영화를 넘겨준다
 				//그러기위해선 여기 클래스에 매개변수로 맴버객체를 받고
 				//영화객체를 생성해 놓아야한다.

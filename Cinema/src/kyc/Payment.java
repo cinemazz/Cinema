@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class Payment {
 	Ticketing ticketing = new Ticketing();
-	public void payment(Ticket ticket) {
+//	public static int cash;
+	public int payment(Ticket ticket) {
 		Scanner sc = new Scanner(System.in);
 				
 		System.out.println("결제 하시겠습니까?");
@@ -45,8 +46,10 @@ public class Payment {
 			}
 			System.out.println("결제금액은 "+cash+"원 입니다.");
 			System.out.println("결제가 완료되었습니다.");
+			return cash;
 		}else {
-			ticketing.ticketing();	
+			ticketing.ticketing();
+			return 0;
 		}
 	}
 }

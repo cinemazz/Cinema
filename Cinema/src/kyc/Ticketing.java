@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.Scanner;
 import java.util.regex.*;
 
+import LJS.LoginProcess;
+import LJS.Member;
 import jmj.Detailpage;
 import jmj.Movie;
 
@@ -282,7 +284,31 @@ public class Ticketing {
 			}	
 		}
 		
-		Ticket ticket = new Ticket(fromDate, movieSelect, cinemaSelect, showTimeSelect, numberOfReservations, seatInfo);
+		//결제전 티켓
+		Ticket ticketShow = new Ticket(fromDate, movieSelect, cinemaSelect, showTimeSelect, numberOfReservations, seatInfo);
+		ticketShow.setFromDate(fromDate);
+		ticketShow.setMovieSelect(movieSelect);
+		ticketShow.setCinemaSelect(cinemaSelect);
+		ticketShow.setShowTimeSelect(showTimeSelect);
+		ticketShow.setNumberOfReservations(numberOfReservations);
+		ticketShow.setSeatSelectSplit(seatSelectSplit);
+		ticketShow.setSeatInfo(seatInfo);
+		
+		System.out.println(
+				"영화 제목 - " + ticketShow.getMovieSelect().getMovieTitle()+"\n"+
+				"날짜 - " + ticketShow.getFromDate()+"\n"+
+				"상영 시간 - " + ticketShow.getShowTimeSelect().time.getTime().getHours()+" : " +ticketShow.getShowTimeSelect().time.getTime().getMinutes()+"\n"+
+				"예매 인원 - " + ticketShow.getNumberOfReservations()+"\n"+
+				"영화 관 - " + ticketShow.getCinemaSelect().getName()+"\n"+
+				"좌석 정보 - " + ticketShow.getSeatInfo()+"\n"+
+				"결제 금액 - " + ticketShow.getNumberOfReservations()*10000+"\n"
+		);
+		
+		Payment payment = new Payment();
+		int pay = payment.payment(ticketShow);	
+		
+		//결제 후 티켓		
+		Ticket ticket = new Ticket(fromDate, movieSelect, cinemaSelect, showTimeSelect, numberOfReservations, seatInfo, pay);
 		ticket.setFromDate(fromDate);
 		ticket.setMovieSelect(movieSelect);
 		ticket.setCinemaSelect(cinemaSelect);
@@ -290,20 +316,8 @@ public class Ticketing {
 		ticket.setNumberOfReservations(numberOfReservations);
 		ticket.setSeatSelectSplit(seatSelectSplit);
 		ticket.setSeatInfo(seatInfo);
-		
-		System.out.println(
-				"영화 제목 - " + ticket.getMovieSelect().getMovieTitle()+"\n"+
-				"날짜 - " + ticket.getFromDate()+"\n"+
-				"상영 시간 - " + ticket.getShowTimeSelect().time.getTime().getHours()+" : " +ticket.getShowTimeSelect().time.getTime().getMinutes()+"\n"+
-				"예매 인원 - " + ticket.getNumberOfReservations()+"\n"+
-				"영화 관 - " + ticket.getCinemaSelect().getName()+"\n"+
-				"좌석 정보 - " + ticket.getSeatInfo()+"\n"+
-				"결제 금액 - " + ticket.getNumberOfReservations()*10000+"\n"
-		);
-		
-		Payment payment = new Payment();
-		payment.payment(ticket);
-		
+		ticket.setPay(pay);
+		LoginProcess.nowMember.getTicketList().add(ticket);
 		
 		return ticket;		
 	}
